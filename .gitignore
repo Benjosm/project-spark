@@ -1,0 +1,16 @@
+projectspark
+projectspark.exe
+
+# Ignore test coverage profiles
+*.out
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE and editor configuration files
+.idea/
+.vscode/
+*.swp
+*~
+.editorconfig
