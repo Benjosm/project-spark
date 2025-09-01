@@ -1,0 +1,54 @@
+# Project Spark: Go-Based Creative Idea Generator
+
+## 1. Purpose & Immediate Value
+Generates unexpected but plausible tech project ideas from any keyword in <1 second.  
+Example: `projectspark --keyword=health` → "A blockchain-based patient record system with zero-knowledge proofs for privacy".  
+Solves brainstorming blocks for developers/startups. User gets instant actionable concepts to spark real work.
+
+## 2. Key Technologies & Justifications
+- Pure Go (no dependencies beyond stdlib)
+- Uses `flag` for CLI parsing (minimal boilerplate)
+- Hardcoded word banks in main.go (no files needed)
+*Verification*: Run `go run main.go --keyword=test` → prints valid idea
+
+## 3. Minimum Viable Interactions
+1. `projectspark --keyword=finance` → Outputs 1 randomized tech concept
+2. `projectspark` (no args) → Shows help text with example
+*Verification*: Execute both commands manually with sample keywords
+
+## 4. File Structure & Startup
+```
+/usr/src/project/
+├── main.go
+└── go.mod
+```
+*Startup code*: Barebones CLI parser in main.go with hardcoded word banks  
+*Verification*: `tree` shows 2 files, `go run main.go` runs without errors
+
+## 5. Core Logic Plan
+**main.go**  
+- *Purpose*: Combines user keyword with randomized tech patterns
+- `generateIdea(keyword string) string`: Core logic
+- `main()`: Handles CLI flags and output
+*Verification*: Call `generateIdea("test")` directly in __main__ with known output
+
+## 6. Build & Run Instructions
+```bash
+go mod init projectspark
+go run main.go --keyword=travel
+```
+*Verification*: Build succeeds in <2s, command outputs formatted idea
+
+## 7. Stubbing & Shortcuts
+- Tech terms hardcoded as string arrays (no JSON/config files)
+- Comments mark where external API could integrate later:
+  `// STUB: Replace with API call to trend database in v2`
+*Verification*: Modify hardcoded array, rebuild → output changes immediately
+
+## 8. Completion Checklist
+- [ ] CLI runs with `--keyword` and prints valid idea
+- [ ] No-arg execution shows usage help
+- [ ] Builds without external dependencies
+- [ ] Generates different output on each run
+
+*No security/deployment concerns - pure local CLI tool*
